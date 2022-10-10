@@ -1,4 +1,3 @@
-
 const API = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
   headers: {
@@ -100,7 +99,7 @@ async function getTrendingMovies() {
 
 async function getMovieById(id) {
   const { data: movie } = await API(`movie/${id}`);
-  
+
   movieImgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   headerSection.style.background = `
     linear-gradient(
@@ -109,10 +108,15 @@ async function getMovieById(id) {
     ),
     url(${movieImgUrl})
   `;
-
+    
   movieDetailTitle.textContent = movie.title;
-  movieDetailDescription.textContent = movie.overview;
   movieDetailScore.textContent = movie.vote_average;
+  movieDetailDescription.innerHTML = `
+    Platform: 
+      <a href="${movie.homepage}" target="_blank">${movie.homepage.split('.')[1]}</a> <br>
+      Released: ${movie.release_date}<br><br> 
+    ${movie.overview}
+  `;
 
   createCategories(movie.genres, movieDetailCategoriesList)
   getRelatedMoviesById(id)
