@@ -1,7 +1,7 @@
 /**
  * @param id {string}
  * @return {HTMLElement}
- */
+*/
 
 const $ = (id) => document.querySelector(id);
 
