@@ -74,6 +74,7 @@ button {
   flex-direction: column;
   justify-content: space-evenly;
   padding: 0 30px;
+  gap: 30px;
 }
 
 .header-container {
@@ -335,5 +336,8 @@ footer {
 @media (max-width:600px) {
   .header-searchForm {
     width: 90%;
+  }
+  .category-container {
+    width: 45%;
   }
 }
